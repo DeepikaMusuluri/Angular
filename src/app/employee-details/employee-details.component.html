@@ -1,0 +1,141 @@
+<style>
+    .main-section {
+        width: 460px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .content-section {
+        background: #FFF;
+        border-radius: 2px;
+        box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .head-section {
+        background: #F3F3F3;
+        text-align: center;
+        padding: 15px 0px;
+        border-bottom: 1px solid #CECECE;
+    }
+
+    .head-section h3 {
+        margin: 0px;
+        color: #565656;
+    }
+
+    .body-section {
+        padding: 15px 30px 30px 30px;
+        overflow: hidden;
+    }
+
+    .body-section .form-input {
+        width: 100%;
+        padding: 15px 0px;
+    }
+
+    .body-section .form-input input[type='text'] {
+        width: calc(100% - 30px);
+        border: 1px solid #D3D3D3;
+        border-radius: 1px;
+        padding: 10px 10px;
+        box-shadow: 0px 0px 0px 5px rgb(239, 244, 247);
+    }
+
+    .body-section .form-input input[type='checkbox'] {
+        float: left;
+    }
+
+    .body-section label {
+        color: #565656;
+        padding: 1px 5px;
+        float: left;
+    }
+
+    .body-section .btn-submit {
+        float: right;
+        background: #DEEDF4;
+        border: 1px solid #B5CBCD;
+        color: #56778E;
+        font-weight: bold;
+        padding: 7px 20px;
+        border-radius: 15px;
+    }
+
+    .footer-section {
+        color: #B5CBCD;
+        text-align: center;
+        padding-top: 15px;
+        font-size: 12px;
+    }
+
+    .footer-section a {
+        color: #DEEDF4;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .image {
+        background-image: url(/assets/background/rohan-aggarwal.jpg);
+
+    }
+
+    tr:hover {
+        background-color: #ffff99;
+    }
+</style>
+
+<!-- Toolbar -->
+
+
+
+
+<div class="content-section">
+
+    <div class="body-section">
+        <form>
+            <h1>Employee details</h1>
+            <div class="form-input">
+                <input type="text" [(ngModel)]="emp.name" name="name" [readonly]="disable"  placeholder="Employee Name">
+                <h5 *ngIf="disable" style="color: red;">name field is read-only</h5>
+            </div>
+            <div class="form-input">
+                <input type="text" [(ngModel)]="emp.age" name="age" placeholder="Employee Age">
+            </div>
+            <div class="form-input">
+                <input type="text" [(ngModel)]="emp.salary" name="salary" placeholder="Employee salary">
+            </div>
+            <div class="form-input">
+                <button type="button" (click)="add()" class="btn btn-success">Add</button>
+                <button type="button" class="btn-submit" (click)="Edit()">Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)="Delete()">Delete</button>&nbsp;
+                <button class="btn btn-danger" (click)="Clear()">clear</button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+<br>
+
+<div class="col-md-6">
+    <h1>Employee details</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>Age</th>
+                <th>salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of Employee" (click)="SelectedRow(item)">
+                <td>{{ item.name }}</td>
+                <td>{{ item.age }}</td>
+                <td>{{ item.salary}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
